@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+</head>
+<body>
+    <h2>Chatbot</h2>
+
+    <form id="chat-form">
+        <input type="text" id="message" placeholder="Type here..." required>
+        <button type="submit">Send</button>
+    </form>
+
+    <p id="reply"></p>
+
+    <script>
+        document.getElementById("chat-form").onsubmit = async function(e) {
+            e.preventDefault();
+            let msg = document.getElementById("message").value;
+
+            let res = await fetch("/chat", {
+                method: "POST",
+                headers: {"Content-Type": "application/x-www-form-urlencoded"},
+                body: "message=" + encodeURIComponent(msg)
+            });
+
+            let data = await res.json();
+            document.getElementById("reply").innerText = "Bot: " + data.reply;
+            document.getElementById("message").value = "";
+        }
+    </script>
+</body>
+</html>
