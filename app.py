@@ -82,7 +82,7 @@ def chatbot_reply(user_text):
             "Relationships can be complicated 💔\n"
             "Do you want advice, or just someone to listen?"
         )
-    
+
     # ------------------------------
     # Topic Detection
     # ------------------------------
@@ -91,6 +91,21 @@ def chatbot_reply(user_text):
         return (
             "Nice 💻 Are you learning this for college, projects, "
             "or interview preparation?"
+        )
+    if context["topic"] == "tech" and "college" in text:
+        return (
+            "Great continue learning, take classes on time.\n"
+            "Do you want advice, or just a motivation?"
+        )
+    if context["topic"] == "tech" and "projects" in text:
+        return (
+            "Great continue learning, take classes on time.\n"
+            "Do you want advice, or any roadmap for the project?"
+        )
+    if context["topic"] == "tech" and "interview" in text:
+        return (
+            "Great continue learning, take classes on time.\n"
+            "Do you want advice for your interview?"
         )
 
     if any(word in text for word in ["exam", "study", "syllabus"]):
@@ -102,6 +117,21 @@ def chatbot_reply(user_text):
         return (
             "Career stress is real 😬\n"
             "Are you aiming for placements, internships, or skill building?"
+        )
+    if context["topic"] == "career" and "placements" in text:
+        return (
+            "Great trust youself , you can crack the college placements.\n"
+            "Do you want advice? "
+        )
+    if context["topic"] == "career" and "internships" in text:
+        return (
+            "Great trust youself , you can crack the internships.\n"
+            "Do you want advice? "
+        )
+    if context["topic"] == "career" and "skill" in text:
+        return (
+            "Great continue learning new skills and sharpening your skills .\n"
+            "Do you want advice? "
         )
 
     # ------------------------------
